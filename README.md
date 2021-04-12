@@ -432,6 +432,13 @@ Creamos los manifiestos
  ```
 [root@helper ~]# ./openshift-install create manifests --dir=ocp
  ```
+ vim manifests/cluster-scheduler-02-config.yml
+ cambiamos a false
+ 
+ rm openshift/99_openshift-cluster-api_master-user-data-secret.yaml
+ rm openshift/99_openshift-cluster-api_worker-user-data-secret.yaml
+
+ 
 Creamos los ignitions
  ```
 [root@helper ~]# ./openshift-install create ignition-configs --dir=ocp
