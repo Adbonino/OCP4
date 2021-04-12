@@ -570,5 +570,18 @@ worker1.ocp4.lab.local   Ready    worker   105m   v1.19.0+7070803
 
 [Video de Instalación](https://www.youtube.com/watch?v=d03xg2PKOPg&feature=youtu.be)
 
+#POST INSTALACION
+
+Bash completion 
+
+```
+[root@bastion ~]# yum install bash-completion.noarch
+
+[root@bastion ~]# oc completion bash > oc_bash_completion
+
+[root@bastion ~]# cp oc_bash_completion /etc/bash_completion.d/.
+```
+
+
 
 
