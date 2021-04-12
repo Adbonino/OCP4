@@ -445,11 +445,12 @@ Creamos los manifiestos
  
 Creamos los ignitions
  ```
-[root@helper ~]# ./openshift-install create ignition-configs --dir=ocp
+[root@bastion ~]# ./openshift-install create ignition-configs --dir=ocp
  ```
 Copiamos los ignitions al web server
  ```
-[root@helper ~]# cp ocp/*.ign /var/www/html/.
+[root@bastion ~]# scp ocp/*.ign root@<ip-helper>:/var/www/html/.
+
 [root@helper ~]# chmod 644 /var/www/html/*.ign
  ```
 Creamos las Vms con los minimos requisitos
@@ -487,7 +488,7 @@ En nuestro caso
 Para ver el proceso de instalacion
 Nos legueamos al bootstrap 
  ```
-[root@helper ~]# ssh -i ~/.ssh/ocp4 core@bootstrap.ocp4.lab.local
+[root@bastion ~]# ssh -i ~/.ssh/ocp4 core@bootstrap.ocp4.lab.local
  ```
 Luego en el bootstrap:
  ```
@@ -495,36 +496,36 @@ Luego en el bootstrap:
  ```
 En el helper ejecutar:
  ```
-[root@helper ~]# ./openshift-install --dir=ocp wait-for bootstrap-complete --log-level=info
+[root@bastion ~]# ./openshift-install --dir=ocp wait-for bootstrap-complete --log-level=info
  ```
  ```
-# oc get csr -o json --kubeconfig=/home/install/ocp/auth/kubeconfig | jq -r '.items[] | select(.status == {}) | .metadata.name'
+[root@bastion ~]# oc get csr -o json --kubeconfig=ocp/auth/kubeconfig | jq -r '.items[] | select(.status == {}) | .metadata.name'
 csr-7dzvd
 csr-xq5vl
  ```
   ```
-# oc adm certificate approve csr-7dzvd  --kubeconfig=/home/install/ocp/auth/kubeconfig
+[root@bastion ~]# oc adm certificate approve csr-7dzvd  --kubeconfig=ocp/auth/kubeconfig
 certificatesigningrequest.certificates.k8s.io/csr-7dzvd approved
  ```
  ```
-# oc adm certificate approve csr-xq5vl  --kubeconfig=/home/install/ocp/auth/kubeconfig
+[root@bastion ~]# oc adm certificate approve csr-xq5vl  --kubeconfig=ocp/auth/kubeconfig
 certificatesigningrequest.certificates.k8s.io/csr-xq5vl approved
  ```
   ```
-# oc get csr -o json --kubeconfig=/home/install/ocp/auth/kubeconfig  | jq -r '.items[] | select(.status == {}) | .metadata.name'
+[root@bastion ~]# oc get csr -o json --kubeconfig=ocp/auth/kubeconfig  | jq -r '.items[] | select(.status == {}) | .metadata.name'
 csr-5j5rz
 csr-x4vvr
  ```
   ```
-# oc adm certificate approve csr-5j5rz --kubeconfig=/home/install/ocp/auth/kubeconfig
+[root@bastion ~]# oc adm certificate approve csr-5j5rz --kubeconfig=ocp/auth/kubeconfig
 certificatesigningrequest.certificates.k8s.io/csr-5j5rz approved
  ```
   ```
-# oc adm certificate approve csr-x4vvr --kubeconfig=/home/install/ocp/auth/kubeconfig
+[root@bastion ~]# oc adm certificate approve csr-x4vvr --kubeconfig=ocp/auth/kubeconfig
 certificatesigningrequest.certificates.k8s.io/csr-x4vvr approved
  ```
  ```
-# ./openshift-install wait-for install-complete --dir=ocp  --log-level debug
+[root@bastion ~]# ./openshift-install wait-for install-complete --dir=ocp  --log-level debug
  ```
 La salida final es:
  ```
@@ -545,8 +546,8 @@ INFO Time elapsed: 18m44s
 
 Luego nos logueamos 
 ```
-# export KUBECONFIG=ocp/auth/kubeconfig
-# oc get nodes
+[root@bastion ~]# export KUBECONFIG=ocp/auth/kubeconfig
+[root@bastion ~]# oc get nodes
 NAME                     STATUS   ROLES    AGE    VERSION
 master0.ocp4.lab.local   Ready    master   150m   v1.19.0+7070803
 master1.ocp4.lab.local   Ready    master   151m   v1.19.0+7070803
