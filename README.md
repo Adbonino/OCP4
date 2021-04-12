@@ -386,17 +386,17 @@ backend ingress-https
 
 Bajamos los paquetes:(openshift-install-linux.tar.gz, openshift-client-linux.tar.gz, rhcos-live.x86_64.iso, pull-secret.txt)
  ```
-[root@helper ~]# tar xzvf openshift-install-linux.tar.gz
-[root@helper ~]# tar xzvf openshift-client-linux.tar.gz
-[root@helper ~]# cp oc kubectl /usr/local/bin 
+[root@bastion ~]# tar xzvf openshift-install-linux.tar.gz
+[root@bastion ~]# tar xzvf openshift-client-linux.tar.gz
+[root@bastion ~]# cp oc kubectl /usr/local/bin 
  ```
 Creamos el directorio de instalacion
  ```
-[root@helper ~]# mkdir ocp
+[root@bastion ~]# mkdir ocp
  ```
 Creamos el archivo install-config.yaml
  ```
-[root@helper ~]# vim install-config.yaml
+[root@bastion ~]# vim install-config.yaml
 ###########################################
 apiVersion: v1
 baseDomain: lab.local
@@ -426,18 +426,22 @@ sshKey: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDSGNnoBSKsCeJo7y/jRtKxIx6MQ45xjeG
  ```
 Copiamos el archivo al directorio de instalacion 
  ```
-[root@helper ~]# cp install-config.yaml ocp
+[root@bastion ~]# cp install-config.yaml ocp
  ```
 Creamos los manifiestos
  ```
-[root@helper ~]# ./openshift-install create manifests --dir=ocp
+[root@bastion ~]# ./openshift-install create manifests --dir=ocp
  ```
- vim manifests/cluster-scheduler-02-config.yml
- cambiamos a false
- 
- rm openshift/99_openshift-cluster-api_master-user-data-secret.yaml
- rm openshift/99_openshift-cluster-api_worker-user-data-secret.yaml
-
+ Comprobar que el parametro mastersSchedulable se encuentre en false. Esta configuración evita que se programen pods en las máquinas master
+ ```
+ [root@bastion ~]# vim ocp/manifests/cluster-scheduler-02-config.yml
+ mastersSchedulable false
+ ```
+ Borrar los archivos de manifiesto de Kubernetes que definen las máquinas masters y workes:
+ ```
+ [root@bastion ~]# rm ocp/openshift/99_openshift-cluster-api_master-user-data-secret.yaml
+ [root@bastion ~]# rm ocp/openshift/99_openshift-cluster-api_worker-user-data-secret.yaml
+```
  
 Creamos los ignitions
  ```
