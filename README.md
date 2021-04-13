@@ -447,6 +447,15 @@ Creamos los ignitions
  ```
 [root@bastion ~]# ./openshift-install create ignition-configs --dir=ocp
  ```
+```
+├── auth
+│   ├── kubeadmin-password
+│   └── kubeconfig
+├── bootstrap.ign
+├── master.ign
+├── metadata.json
+└── worker.ign
+```
 Copiamos los ignitions al web server
  ```
 [root@bastion ~]# scp ocp/*.ign root@<ip-helper>:/var/www/html/.
