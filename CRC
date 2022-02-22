@@ -1,0 +1,331 @@
+    1  ip addr
+    2  oc get all
+    3  ls
+    4  cd Work_dir/
+    5  ls
+   11  ssh 10.54.118.9 -l abonino
+   12  sudo yum repolist all
+   13  sudo yum install NetworkManager
+   14  sudo yum install git
+   15  lsblk
+   16  ls
+   17  mkdir Work_dir
+   18  cd Work_dir/
+   19  wget https://developers.redhat.com/content-gateway/rest/mirror/pub/openshift-v4/clients/crc/latest/crc-linux-amd64.tar.xz
+   20  ls
+   21  tar xvf crc-linux-amd64.tar.xz crc-linux-1.39.0-amd64/
+   22  ls
+   23  cd crc-linux-1.39.0-amd64/
+   24  ls
+   25  sudo cp crc /usr/local/bin
+   26  crc setup
+   27  cd ..
+   28  crc start -p pull-secret
+   29  vim started_crc.txt
+   30  cat started_crc.txt
+   
+   $ crc console --credentials
+   $ oc login -u kubeadmin -p HbYm5-7xzip-iwqBZ-wfAdI https://api.crc.testing:6443
+   $ oc get nodes
+   $ oc new-project demotmp --description="mi primer demo" --display-name="Demo_test"
+   $ oc project
+   $ oc new-app https://github.com/openshift/ruby-hello-world.git
+   $ oc get all
+   $ oc get pods
+   $ oc expose service ruby-hello-world
+   $ oc get all
+   $ curl ruby-hello-world-demotmp.apps-crc.testing
+   $ oc get all
+   $ oc status
+   $ oc api-resources
+   $ oc api-resourcer | grep OAuth
+   $ oc api-resources | grep OAuth
+   $ oc get all
+   $ oc get secret
+   $ oc get secret -n demotmp
+   
+   55  oc get nodes
+   56  oc login -u kubeadmin -p HbYm5-7xzip-iwqBZ-wfAdI https://api.crc.testing:6443
+   57  oc get nodes
+   58  oc delete project test2
+   59  oc delete porject demotmp
+   60  oc delete project demotmp
+   61  oc new-project demotmp --description="Mi primer demo" --display-name="Mi demo"
+   62  oc get all
+   63  oc new-app https://github.com/openshift/ruby-hello-world.git
+   64  oc get all
+   65  oc get pods
+   66  htpasswd
+   67  oc project
+   68  oc get all
+   69  oc get svc
+   70  oc expose service ruby-hello-world
+   71  oc project test
+   72  oc get pods
+   73  oc logs httpd-example-1-build
+   74  oc get pods
+   75  oc logs httpd-example-1-deploy
+   76  oc get pods
+   77  oc logs httpd-example-1-deploy
+   78  oc get route
+   79  curl httpd-example-test.apps-crc.testing
+   80  oc get all
+   81  oc get bc
+   82  oc get all
+   83  oc get deploymentconfigs
+   84  oc get dc
+   85  oc getp dc -o wide
+   86  oc getp dc/httpd-example -o wide
+   87  oc get dc/httpd-example -o wide
+   88  oc get dc -o wide
+   89  oc get -o dc salida.yaml
+   90  top
+   91  oc project
+   92  oc project demtmp
+   93  oc project demotmp
+   94  ls
+   95  rm crc-linux-amd64.tar.xz
+   96  oc project
+   97  oc delete project demotmp
+   98  oc porject
+   99  oc project
+  100  oc get all
+  101  oc project
+  102  oc project default
+  103  oc get ns
+  104  oc get namespaces
+  105  oc new-project desa1
+  106  oc get ns
+  107  oc get projects desa1
+  108  oc describe porject desa1
+  109  oc describe project desa1
+  110  oc get project desa1 -o yaml
+  111  ls
+  112  oc get project desa1
+  113  oc get project desa1 -o yaml
+  114  oc get project desa1 -o yaml > desa1.yaml
+  115  vim desa1.yaml
+  116  ls
+  117  oc apply -f desa1.yaml
+  118  vim desa1.yaml
+  119  oc apply -f desa1.yaml
+  120  oc get project desa1
+  121  vim desa1.yaml
+  122  cat desa1.yaml
+  123  mv desa1.yaml desa2.yaml
+  124  ls
+  125  cat desa2.yaml
+  126  oc api-resources | grep project
+  127  oc apply -f desa2.yaml
+  128  oc project
+  129  oc project desa2
+  130  oc describe project desa2
+  131  cat desa2.yaml
+  132  oc imge
+  133  oc image
+  134  oc image --help
+  135  oc help
+  136  oc image list
+  137  oc image -h
+  138  oc image serve
+  139  oc image info
+  140  oc get pods
+  141  oc project default
+  142  oc get pods
+  143  oc project demotmp
+  144  oc project test
+  145  oc get pods
+  146  oc rsh httpd-example-1-7xrhc
+  147  oc console
+  148  crc console
+  149  lsblk
+  150  lvd
+  151  lvdisplay
+  152  sudo lvdisplay
+  153  cat /etc/fstab
+  154  top
+  155  oc project
+  156  oc project desa1
+  157  oc run --generator=run-pod/v1 nginx --image=nginx
+  158  oc run --help
+  159  oc run --help | more
+  160  oc run --help | grep generator
+  161  oc run nginx --image=nginx
+  162  oc get all
+  163  kubectl
+  164  ssh 10.54.154.195 -l root
+  165  oc project
+  166  oc logs nginx
+  167  oc rsh nginx
+  168  docker
+  169  podman
+  170  sudo yum install docker
+  171  vim Dockerfile
+  172  sudo docker build -t adbonino88/nginx-openshift .
+  173  sudo docker images
+  174  cat Dockerfile
+  175  sudo docker build -t adbonino88/nginx-openshift .
+  176  cat Dockerfile
+  177  vim Dockerfile
+  178  sudo docker build -t adbonino88/nginx-openshift .
+  179  vim Dockerfile
+  180  sudo docker build -t adbonino88/nginx-openshift .
+  181  vim Dockerfile
+  182  sudo docker build -t adbonino88/nginx-openshift .
+  183  vim Dockerfile
+  184  sudo docker build -t adbonino88/nginx-openshift .
+  185  vim pod.yml
+  186  vim Dockerfile
+  187  sudo docker build -t adbonino88/nginx-openshift .
+  188  vim Dockerfile
+  189  sudo docker build -t adbonino88/nginx-openshift .
+  190  vim Dockerfile
+  191  sudo docker build -t adbonino88/nginx-openshift .
+  192  vim Dockerfile
+  193  sudo docker build -t adbonino88/nginx-openshift .
+  194  vim Dockerfile
+  195  sudo docker build -t adbonino88/nginx-openshift .
+  196  vim Dockerfile
+  197  sudo docker build -t adbonino88/nginx-openshift .
+  198  sudo docker images
+  199  sudo docker login
+  200  sudo docker push adbonino88/nginx-openshift
+  201  sudo docker login
+  202  sudo docker push adbonino88/nginx-openshift
+  203  sudo docker login
+  204  sudo docker
+  205  sudo docker push adbonino88/repositorio/nginx-openshift
+  206  sudo docker push nginx-openshift
+  207  sudo docker images
+  208  sudo docker push localhost/adbonino88/nginx-openshift
+  209  sudo docker push adbonino88/nginx-openshift
+  210  sudo docker login
+  211  sudo docker push adbonino88/nginx-openshift
+  212  podman login
+  213  sudo docker push adbonino88/nginx-openshift
+  214  docker push adbonino88/nginx-openshift
+  215  sudo docker push adbonino88/nginx-openshift
+  216  vim deploy.yaml
+  217  oc get dc
+  218  ls
+  219  cd Work_dir/
+  220  ls
+  221  cat started_crc.txt
+  222  eval $(crc oc-env)
+  223  oc get pod
+  224  oc get dc
+  225  oc get all
+  226  oc get dc example
+  227  oc get dc
+  228  oc get deploy
+  229  oc describe deploy example
+  230  oc describe deploy/example
+  231  oc get all
+  232  oc get rs
+  233  oc describe rs/example
+  234  oc describe rs/example-7fdf6f7cb
+  235  ls
+  236  oc apply -f servicio.yaml
+  237  oc get routes
+  238  crc ip
+  239  curl 192.168.130.11:30005
+  240  oc get nodes
+  241  oc project
+  242  sudo docker
+  243  sudo docker login
+  244  sudo docker images
+  245  sudo docker push adbonino88/nginx-openshift
+  246  ls
+  247  cat desa2.yaml
+  248  cat pod.yml
+  249  vim pod.yml
+  250  mv pod.yml pod.yaml
+  251  oc project
+  252  pc new-project desa2
+  253  oc new-project desa2
+  254  oc project desa2
+  255  oc get all
+  256  oc apply -f pod.yaml
+  257  oc get all
+  258  docker images
+  259  sudo docker images
+  260  oc get all
+  261  oc rsh nginx-openshift
+  262  ls
+  263  cat Dockerfile
+  264  oc rsh nginx-openshift
+  
+  
+  $ sudo yum install -y httpd-tools
+  Creo el archivo de usuarios
+  $ htpasswd -c -B -b users.htpasswd abonino jackfruitbus437
+  $ for USER in crc_user developer1 developer2 ; do htpasswd -b -B users.htpasswd $USER jackfruitbus437; done
+  $ cat users.htpasswd
+  Verificacion de password
+  $ htpasswd -v users.htpasswd crc_user
+  $ htpasswd -v -b users.htpasswd developer1 jackfruitbus437
+  $ htpasswd -v -b users.htpasswd developer21 jackfruitbus437
+  $ htpasswd -v -b users.htpasswd developer2 jackfruitbus437
+  
+  
+  
+  
+  280  ls
+  281  oc project
+  282  oc login
+  283  crc console --credentials
+  284  oc login -u kubeadmin -p HbYm5-7xzip-iwqBZ-wfAdI https://api.crc.testing:6443
+  285  oc get all
+  286  oc describe pod/nginx-openshift
+  287  oc describe pod/nginx-openshift | grep more
+  288  oc describe pod/nginx-openshift | more
+  289    oc new-project blog
+  290  oc project
+  291  oc new-app
+  292  oc new-app apasoft/blog
+  293  oc get alll
+  294  oc get all
+  295  oc get pod
+  296  oc get is
+  297  oc describe is blog
+  298  oc get deploymentconfig
+  299  oc get deployment
+  300  oc get deploy
+  301  os get all
+  302  oc get all
+  303  oc get dc
+  304  oc get deployment
+  305  oc get deployment.apps
+  306  oc new-project blog1
+  307  oc new-app apasoft/blog --as-deploymentconfig
+  308  oc new-app apasoft/blog --as-deployment-config
+  309  oc get all
+  310  oc get dc
+  311  oc describe dc
+  312  oc get all
+  313  oc get pods
+  314  oc get service
+  315  oc expose service blog
+  316  oc get route
+  317  oc get pods
+  318  oc get orute
+  319  oc get route
+  320  oc getl all -o name -l app=blog
+  321  oc get all -o name -l app=blog
+  322  oc get pods
+  323  oc scale --replicas=3 dc blog
+  324  oc get pods
+  325  oc get all -o name
+  326  oc project
+  327  oc project desa
+  328  oc get all -o name
+  
+  
+  $ oc new-project wordpress
+  $ oc adm policy add-scc-to-user anyuid -z default
+  Use la opcion --as-deployment-config para que genere un deployment-Config en vez un deployment
+  $ oc new-app mysql:5.7 --name=mysql1 -e MYSQL_ROOT_PASSWORD=secret -e MYSQL_USER=usu1 -e MYSQL_PASSWORD=secret MYSQL_DATABASE=wordpress --as-deployment-config
+  $ oc new-app wordpress --name=wordpress1 -e WORDPRESS_DB_HOST=mysql1 -e WORDPRESS_DB_USER=usu1 -e WORDPRESS_DB_PASSWPRD=secret -e WORDPRESS_DB_NAME=wordpress
+  $ oc expose service/wordpress1
+  $ oc get pods
+ 
